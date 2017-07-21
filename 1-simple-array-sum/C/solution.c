@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main() {
   // Read File In
@@ -16,26 +17,9 @@ int main() {
       int array_position = 0;
       for (int i = 0; i < array_size; i++)
       {
-        int element_size = 3;
-        char element[element_size];
-        int element_counter = 0;
-        int reached_space = 0;
-
-        while ((element_counter < element_size) && (reached_space == 0))
-        {
-          int current_char = fgetc(file);
-          if (current_char == ' ')
-          {
-            reached_space = 1;
-          }
-          element[element_counter++] = current_char;
-        }
-        // null terminate array
-        element[element_counter] = 0;
-        int number;
-        // converts char array to an int
-        sscanf(element, "%d", &number);
-        number_array[array_position++] = number;
+        char number[8];
+        fscanf(file, "%s", number);
+        number_array[array_position++] = atoi(number);
       }
       int sum = 0;
       for (int i = 0; i < array_size; i++)
