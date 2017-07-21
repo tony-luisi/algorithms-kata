@@ -21,3 +21,4 @@ I've chosen the following languages:
 1. Php
 1. Swift
 1. C#
+1. Go
