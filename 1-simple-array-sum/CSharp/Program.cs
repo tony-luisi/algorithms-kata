@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace cs
 {
@@ -6,13 +7,9 @@ namespace cs
     {
         static void Main(string[] args)
         {
-            string[] lines = System.IO.File.ReadAllLines("../input/1.txt");
-            string[] stringArray = lines[1].Split(' ');
-            int[] intArray = new int[stringArray.Length];
-            for (int i = 0; i < stringArray.Length; i++)
-            {
-                intArray[i] = Int32.Parse(stringArray[i]);
-            }
+            string path = "../input/1.txt";
+            string[] stringArray = GetFileLines(path)[1].Split(' ');
+            int[] intArray = ConvertArray(stringArray);
             Console.WriteLine(SumArray(intArray));
         }
 
@@ -24,6 +21,16 @@ namespace cs
                 sum += number;
             }
             return sum;
+        }
+
+        static string[] GetFileLines(string path)
+        {
+            return System.IO.File.ReadAllLines(path);
+        }
+
+        static int[] ConvertArray(string[] stringArray)
+        {
+            return stringArray.Select(element => Int32.Parse(element)).ToArray();
         }
     }
 }
